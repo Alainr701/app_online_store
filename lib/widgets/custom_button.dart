@@ -1,3 +1,4 @@
+import 'package:app_store_online/global/app_constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -16,13 +17,13 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
-        minimumSize: const Size(double.infinity, 50),
-        foregroundColor: color,
-      ),
+          shape: const RoundedRectangleBorder(),
+          minimumSize: const Size(double.infinity, 50),
+          backgroundColor: color ?? AppConstants.secondaryColor),
       child: Text(
         text,
-        style: TextStyle(
-          color: color ?? Colors.black,
+        style: const TextStyle(
+          color: Colors.black,
         ),
       ),
     );

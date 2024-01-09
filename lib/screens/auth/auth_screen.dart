@@ -1,3 +1,4 @@
+import 'package:app_store_online/services/auth_service.dart';
 import 'package:app_store_online/widgets/widgets.dart';
 import 'package:app_store_online/global/global.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class _AuthScreenState extends State<AuthScreen> {
   Auth _auth = Auth.signUp;
   final _signUpFormKey = GlobalKey<FormState>();
   final _signInFormKey = GlobalKey<FormState>();
+  final AuthService authService = AuthService();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
@@ -24,6 +26,23 @@ class _AuthScreenState extends State<AuthScreen> {
     _emailController.dispose();
     _passwordController.dispose();
     _nameController.dispose();
+  }
+
+  void signUpUser() {
+    authService.signUpUser(
+      context: context,
+      email: _emailController.text,
+      password: _passwordController.text,
+      name: _nameController.text,
+    );
+  }
+
+  void signInUser() {
+    authService.signInUser(
+      context: context,
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
   }
 
   @override
@@ -93,7 +112,9 @@ class _AuthScreenState extends State<AuthScreen> {
                         CustomButton(
                           text: 'Sign Up',
                           onTap: () {
-                            if (_signUpFormKey.currentState!.validate()) {}
+                            if (_signUpFormKey.currentState!.validate()) {
+                              signUpUser();
+                            }
                           },
                         )
                       ],
@@ -142,7 +163,9 @@ class _AuthScreenState extends State<AuthScreen> {
                         CustomButton(
                           text: 'Sign In',
                           onTap: () {
-                            if (_signInFormKey.currentState!.validate()) {}
+                            if (_signInFormKey.currentState!.validate()) {
+                              signInUser();
+                            }
                           },
                         )
                       ],

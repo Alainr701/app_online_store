@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-String uri = 'http://<yourip>:3000';
+String uri = 'http://192.168.100.91:3000';
 
 class AppConstants {
   // COLORS
+  static const secondaryColor = Color.fromRGBO(54, 230, 84, 1);
+  static const backgroundColor = Colors.white;
+  static const Color greyBackgroundCOlor = Color(0xffebecee);
+  static var selectedNavBarColor = Colors.cyan[800]!;
+  static const unselectedNavBarColor = Colors.black87;
   static const appBarGradient = LinearGradient(
     colors: [
       Color.fromARGB(255, 29, 201, 192),
@@ -11,12 +16,6 @@ class AppConstants {
     ],
     stops: [0.5, 1.0],
   );
-
-  static const secondaryColor = Color.fromRGBO(255, 153, 0, 1);
-  static const backgroundColor = Colors.white;
-  static const Color greyBackgroundCOlor = Color(0xffebecee);
-  static var selectedNavBarColor = Colors.cyan[800]!;
-  static const unselectedNavBarColor = Colors.black87;
 
   // STATIC IMAGES
   static const List<String> carouselImages = [
