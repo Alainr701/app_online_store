@@ -1,6 +1,7 @@
 import 'package:app_store_online/providers/user_provider.dart';
-import 'package:app_store_online/screens/auth/auth_screen.dart';
 import 'package:app_store_online/router/router.dart';
+import 'package:app_store_online/screens/screens.dart';
+import 'package:app_store_online/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -34,12 +35,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // final AuthService authService = AuthService();
+  final AuthService authService = AuthService();
 
   @override
   void initState() {
     super.initState();
-    // authService.getUserData(context);
+    authService.getUserData(context);
   }
 
   @override
@@ -60,13 +61,15 @@ class _MyAppState extends State<MyApp> {
         ),
         useMaterial3: true, // can remove this line
       ),
-      initialRoute: AuthScreen.routeName,
+      // initialRoute: AuthScreen.routeName,
       onGenerateRoute: (settings) => generateRoute(settings),
-      // home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-      //     ? Provider.of<UserProvider>(context).user.type == 'user'
-      //         ? const BottomBar()
-      //         : const AdminScreen()
-      //     : const AuthScreen(),
+      home: Provider.of<UserProvider>(context).user.token.isNotEmpty
+          ? const HomeScreen()
+          : const AuthScreen(),
+      // ? Provider.of<UserProvider>(context).user.type == 'user'
+      //     ? const BottomBar()
+      //     : const AdminScreen()
+      // : const AuthScreen(),
     );
   }
 }
